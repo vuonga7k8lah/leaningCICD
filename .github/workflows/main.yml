@@ -1,8 +1,7 @@
 name: CICD-AUTO-UPLOAD-PLUGIN-WP
-
-
 on:
-  branches: [ main ]
+  push:
+    branches: [ main ]
 
   workflow_dispatch:
 
