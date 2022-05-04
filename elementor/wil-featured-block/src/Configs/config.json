@@ -1,0 +1,19 @@
+{
+  "name": "wil-featured-block",
+  "title": "Wiloke Featured Block",
+  "icon": "eicon-posts-grid",
+  "category": "",
+  "keywords": [
+    "card",
+    "wiloke",
+    "featured",
+    "featured block",
+    "list"
+  ],
+  "css": "https://envato-element-featured-block.netlify.app/styles/styles.css",
+  "js": "https://envato-element-featured-block.netlify.app/js/scripts.js",
+  "libs": {
+    "css": [],
+    "js": []
+  }
+}

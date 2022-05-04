@@ -1,0 +1,33 @@
+// .#{$componentName}-wrapper {
+//   .#{$componentName}-parent {
+//     [class*="#{$componentName}-child-"] {
+//       transition: 0.3s;
+//     }
+//     .#{$componentName}-child--fadeup {
+//       opacity: 0;
+//       transform: translateY(10px);
+//     }
+//     .#{$componentName}-child--fadedown {
+//       opacity: 0;
+//       transform: translateY(-10px);
+//     }
+//     .#{$componentName}-child--zoom {
+//       opacity: 0;
+//       transform: scale(0.5);
+//     }
+//     &:hover {
+//       .#{$componentName}-child--fade {
+//         opacity: 1;
+//       }
+//       .#{$componentName}-child--fadedown,
+//       .#{$componentName}-child--fadeup {
+//         opacity: 1;
+//         transform: translateY(0);
+//       }
+//       .#{$componentName}-child--zoom {
+//         opacity: 1;
+//         transform: scale(1);
+//       }
+//     }
+//   }
+// }

@@ -1,23 +1,15 @@
 name: CICD-AUTO-UPLOAD-PLUGIN-WP
- 
-# Controls when the action will run. 
+
+
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-#  pull_request:
-#    branches: [ main ]
- 
-  # Allows you to run this workflow manually from the Actions tab
+  branches: [ main ]
+
   workflow_dispatch:
- 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
-  # This workflow contains a single job called "SFTP"
   deploy-via-sftp:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       - name: Install composer
@@ -26,18 +18,18 @@ jobs:
           composer update
           composer dump-autoload
         working-directory: ./
-          
+
       - name: SFTP Deploy
         uses: Creepios/sftp-action@v1.0.3
         with:
           username: 'root'
           host: '198.58.120.4'
-          port: 22 # default is 22
+          port: 22
           password: 'HktXQ2j,RYSj/,6-'
-          # will put all file under this path
-          localPath: './' # default is ./*
-          # files will copy to under remote_path
-          remotePath: '/var/www/magicbadges/wp-content/plugins/wil-cicd'
-          
+          #đổi tên thư mục đúng với tên plugin
+          localPath: './elementor/wil-featured-block'
+          #đổi tên thư mục đúng với tên plugin
+          remotePath: '/var/www/magicbadges/wp-content/plugins/wil-featured-block'
+
           # sftp args
           args: '-o ConnectTimeout=5'

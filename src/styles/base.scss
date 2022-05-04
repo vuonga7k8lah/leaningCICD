@@ -1,0 +1,12 @@
+.#{$componentName}-wrapper {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.#{$componentName}-wrapper,
+.#{$componentName}-wrapper:before,
+.#{$componentName}-wrapper:after,
+.#{$componentName}-wrapper *,
+.#{$componentName}-wrapper *:before,
+.#{$componentName}-wrapper *:after {
+  box-sizing: border-box;
+  letter-spacing: 0 !important;
+}

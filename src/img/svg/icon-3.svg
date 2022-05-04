@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="55px" viewBox="0 0 52 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-3</title>
+    <g id="Typography" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Education" transform="translate(-929.000000, -1309.000000)">
+            <g id="icon-3" transform="translate(931.000000, 1311.000000)">
+                <path d="M19,0.9375 C29.4703984,0.9375 37.9583333,9.42543495 37.9583333,19.8958333 L37.9583333,31.5625 C37.9583333,42.0328984 29.4703984,50.5208333 19,50.5208333 C8.52960162,50.5208333 0.0416666667,42.0328984 0.0416666667,31.5625 L0.0416666667,19.8958333 C0.0416666667,9.42543495 8.52960162,0.9375 19,0.9375 Z" id="Rectangle" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-dasharray="194,30" transform="translate(19.000000, 25.729167) scale(1, -1) translate(-19.000000, -25.729167) "></path>
+                <path d="M8.03999318,16.4166667 C7.47974728,19.5175154 13.5199966,21.5208333 19,21.5208333 C24.4800034,21.5208333 30.5202527,19.5175154 29.9600068,16.4166667" id="Path" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="21,5"></path>
+                <path d="M37.6041667,23.5416667 C44.4501964,23.5416667 50,29.0914703 50,35.9375 L50,47.3333333 C50,47.8856181 49.5522847,48.3333333 49,48.3333333 L37.6041667,48.3333333 C30.758137,48.3333333 25.2083333,42.7835297 25.2083333,35.9375 C25.2083333,29.0914703 30.758137,23.5416667 37.6041667,23.5416667 Z" id="Rectangle" fill-opacity="0.580938593" fill="#4D80FF" transform="translate(37.604167, 35.937500) scale(-1, 1) translate(-37.604167, -35.937500) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

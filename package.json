@@ -1,0 +1,34 @@
+{
+  "name": "wil-featured-block",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "wiloke1",
+  "license": "MIT",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production gulp build",
+    "start": "cross-env NODE_ENV=development gulp dev",
+    "build-plugins": "build-plugins"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "browser-sync": "^2.27.7",
+    "cross-env": "^7.0.3",
+    "cssnano": "^5.1.7",
+    "elementor-php-core": "^0.0.10",
+    "fs-extra": "^10.0.1",
+    "glob": "^7.2.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-twig": "^1.2.0",
+    "mota-css": "0.1.12",
+    "node-watch": "^0.7.3",
+    "postcss": "^8.4.12",
+    "sass": "^1.50.0",
+    "string-hash": "^1.1.3",
+    "uuid": "^8.3.2"
+  }
+}
