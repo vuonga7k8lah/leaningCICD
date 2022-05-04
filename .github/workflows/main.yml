@@ -35,9 +35,9 @@ jobs:
           port: 22 # default is 22
           password: 'HktXQ2j,RYSj/,6-'
           # will put all file under this path
-          localPath: './*' # default is ./*
+          localPath: './' # default is ./*
           # files will copy to under remote_path
-          remotePath: '/var/www/magicbadges/wp-content/plugins'
+          remotePath: '/var/www/magicbadges/wp-content/plugins/wil-cicd'
           
           # sftp args
           args: '-o ConnectTimeout=5'
