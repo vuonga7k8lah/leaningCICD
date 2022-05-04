@@ -1,6 +1,6 @@
 <?php
 
-namespace WilokeCard\Share;
+namespace WilokeTeamMember\Share;
 
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
@@ -9,32 +9,32 @@ use Elementor\Widget_Base;
 trait TraitHandleAutoRenderSettingControls
 {
 	public array $convertTypeElementor
-	                           = [
-			'text'     => Controls_Manager::TEXT,
-			'number'   => Controls_Manager::NUMBER,
-			'textarea' => Controls_Manager::TEXTAREA,
-			'wysiwyg'  => Controls_Manager::WYSIWYG,
-			'code'     => Controls_Manager::CODE,
-			'hidden'   => Controls_Manager::HIDDEN,
-			'switcher' => Controls_Manager::SWITCHER,
-			'toggle'   => Controls_Manager::POPOVER_TOGGLE,
-			'group'    => Controls_Manager::POPOVER_TOGGLE,
-			'select'   => Controls_Manager::SELECT,
-			'select2'  => Controls_Manager::SELECT2,
-			'choose'   => Controls_Manager::CHOOSE,
-			'color'    => Controls_Manager::COLOR,
-			'icons'    => Controls_Manager::ICONS,
-			'image'    => Controls_Manager::MEDIA,
-			'font'     => Controls_Manager::FONT,
-			'dateTime' => Controls_Manager::DATE_TIME,
-			'gallery'  => Controls_Manager::GALLERY,
-			'array'    => Controls_Manager::REPEATER,
-			'tabs'     => Controls_Manager::TABS,
-			'tab'      => Controls_Manager::TAB,
-			'section'  => Controls_Manager::TAB_CONTENT,
-			'media'    => Controls_Manager::MEDIA,
-			'url'      => Controls_Manager::URL,
-			'slide'    => Controls_Manager::SLIDER
+		= [
+			'text'            => Controls_Manager::TEXT,
+			'number'          => Controls_Manager::NUMBER,
+			'textarea'        => Controls_Manager::TEXTAREA,
+			'wysiwyg'         => Controls_Manager::WYSIWYG,
+			'code'            => Controls_Manager::CODE,
+			'hidden'          => Controls_Manager::HIDDEN,
+			'switcher'        => Controls_Manager::SWITCHER,
+			'popover_toggle'  => Controls_Manager::POPOVER_TOGGLE,
+			'select'          => Controls_Manager::SELECT,
+			'select2'         => Controls_Manager::SELECT2,
+			'choose'          => Controls_Manager::CHOOSE,
+			'color'           => Controls_Manager::COLOR,
+			'icons'           => Controls_Manager::ICONS,
+			'image'           => Controls_Manager::MEDIA,
+			'font'            => Controls_Manager::FONT,
+			'dateTime'        => Controls_Manager::DATE_TIME,
+			'gallery'         => Controls_Manager::GALLERY,
+			'array'           => Controls_Manager::REPEATER,
+			'tabs'            => Controls_Manager::TABS,
+			'tab'             => Controls_Manager::TAB,
+			'section'         => Controls_Manager::TAB_CONTENT,
+			'media'           => Controls_Manager::MEDIA,
+			'url'             => Controls_Manager::URL,
+			'slide'           => Controls_Manager::SLIDER,
+			'wil_custom_post' => 'wil-custom-post'
 		];
 
 	public function handleFieldsAddControls($aFields, $hadTypeRepeater = false): array
@@ -84,7 +84,6 @@ trait TraitHandleAutoRenderSettingControls
 	public function handle(array $aData, Widget_Base $that)
 	{
 		foreach ($aData as $aSession) {
-
 			if ($aSession['type'] == 'section') {
 				$aSessionField = $aSession;
 				$aSessionField['tab'] = $this->convertTypeElementor[$aSession['type']];
@@ -136,40 +135,38 @@ trait TraitHandleAutoRenderSettingControls
 									}
 
 								}
-
 							}
 							$that->end_controls_tabs();
-						} elseif ($aFields['type'] == 'group') {
-							if (!empty($aFields['fields'])) {
+						} else {
+							$aFieldsControl = $aFields;
+							$aFieldsControl['type'] = $this->convertTypeElementor[$aFields['type']];
+							if ($aFieldsControl['type'] == 'popover_toggle' && !empty($aFieldsControl['fields'])) {
 								$this->add_control(
-									$aFields['id'],
-									[
-										'type'         => Controls_Manager::POPOVER_TOGGLE,
-										'label'        => $aFields['label'],
-										'label_off'    => 'Disable',
-										'label_on'     => 'Enable',
-										'return_value' => 'yes',
-									]
+									$aFieldsControl['id'],
+									$aFieldsControl
 								);
 								$this->start_popover();
-								foreach ($aFields['fields'] as $aFieldsItems) {
+								foreach ($aFieldsControl['fields'] as $aFieldsItems) {
 									$this->add_control(
 										$aFieldsItems['id'],
 										$aFieldsItems
 									);
 								}
 								$this->end_popover();
+							} else {
+								$aFieldsControl['fields'] = $this->handleFieldsAddControls($aFields['fields'] ?? [],
+									$aFieldsControl['type'] == 'array');
+								$aFieldsControl['default'] = $this->convertSwitchToBoolean($aFields['default']??'', 'in');
+								if (isset($aFields['condition'])&&!empty($aFields['condition'])){
+									foreach ($aFields['condition'] as $key=>$values){
+										$aFieldsControl['condition'][$key]=$this->convertSwitchToBoolean($values, 'in');;
+									}
+								}
+								$that->add_control(
+									$aFieldsControl['id'],
+									$aFieldsControl
+								);
 							}
-						} else {
-							$aFieldsControl = $aFields;
-							$aFieldsControl['type'] = $this->convertTypeElementor[$aFields['type']];
-							$aFieldsControl['fields'] = $this->handleFieldsAddControls($aFields['fields'] ?? [],
-								$aFieldsControl['type'] == 'array');
-							$aFieldsControl['default'] = $this->convertSwitchToBoolean($aFields['default'], 'in');
-							$that->add_control(
-								$aFieldsControl['id'],
-								$aFieldsControl
-							);
 						}
 					}
 				}
@@ -193,20 +190,21 @@ trait TraitHandleAutoRenderSettingControls
 						// data cua cac repeater
 						$aResult = [];
 						//lay array field name
-						if (!empty($aFields['fields'])){
-							$aNameField=[];
-							foreach ($aFields['fields'] as $aItem){
-								$aNameField[$aItem['name']] =$aItem['type'];
+						if (!empty($aFields['fields'])) {
+							$aNameField = [];
+							foreach ($aFields['fields'] as $aItem) {
+								$aNameField[$aItem['name']] = $aItem['type'];
 							}
 							foreach ($aSettings[$aFields['id']] as $aItemDataFields) {
 								$aRawResult = [];
-								foreach ($aNameField as $name=>$type) {
+								foreach ($aNameField as $name => $type) {
 									if (is_array($aItemDataFields[$name])) {
 										$aRawResult[$name] = $aItemDataFields[$name]['value'] ??
 											$aItemDataFields[$name]['url'] ?? "";
 									} else {
-										$valueFields=($type=='switcher')
-											?isset($aItemDataFields[$name])&&!empty($aItemDataFields[$name]) :$aItemDataFields[$name];
+										$valueFields = ($type == 'switcher')
+											? isset($aItemDataFields[$name]) && !empty($aItemDataFields[$name]) :
+											$aItemDataFields[$name];
 										$aRawResult[$name] = $valueFields;
 									}
 								}
@@ -215,13 +213,14 @@ trait TraitHandleAutoRenderSettingControls
 
 							}
 							$aDataFields[$aFields['name']] = $aResult;
-						}else{
-							$aDataFields[$aFields['name']]=$aSettings[$aFields['id']]['value'] ??$aSettings[$aFields['id']]['url'] ?? "";
+						} else {
+							$aDataFields[$aFields['name']] = $aSettings[$aFields['id']]['value'] ??
+								$aSettings[$aFields['id']]['url'] ?? "";
 						}
 					} else {
-						$valueFields=($aFields['type']=='switcher')?isset($aSettings[$aFields['id']])&&!empty
-							($aSettings[$aFields['id']])&&($aSettings[$aFields['id']]!='no')
-							:$aSettings[$aFields['id']];
+						$valueFields = ($aFields['type'] == 'switcher') ? isset($aSettings[$aFields['id']]) && !empty
+							($aSettings[$aFields['id']]) && ($aSettings[$aFields['id']] != 'no')
+							: $aSettings[$aFields['id']];
 						$aDataFields[$aFields['name']] = $valueFields;
 					}
 				}

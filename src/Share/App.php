@@ -1,6 +1,6 @@
 <?php
 
-namespace WilokeCard\Share;
+namespace WilokeTeamMember\Share;
 
 class App
 {

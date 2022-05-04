@@ -1,10 +1,11 @@
-{% set componentName = "wil-card" %}
+{% set componentName = "wil-team-member" %}
 {% set columnStyles = '--col-xs:' ~ responsive.xs ~ ';--col-sm:' ~ responsive.sm ~ ';--col-md:' ~ responsive.md ~ ';--col-lg:' ~ responsive.lg %}
+{% set gapStyles = '--gap-xs:' ~ responsive.gapXs ~ 'px;--gap-sm:' ~ responsive.gapSm ~ 'px;--gap-md:' ~ responsive.gapMd ~ 'px;--gap-lg:' ~ responsive.gapLg ~ 'px' %}
 {% set componentFile = 'component3.twig' %}
 
 {% if content|length == 0 %}
 <div class="{{ componentName }}-wrapper">
-  <div class="p:40px fz:20px ta:center bgc:#eee cur:pointer">Click here to set up the card</div>
+  <div class="p:40px fz:20px ta:center bgc:#eee cur:pointer">Click here to set up the team member</div>
 </div>
 {% else %}
 
@@ -14,10 +15,11 @@
       class="wil-swiper"
       data-options='{
         slidesPerView: {{ responsive.xs }},
+        spaceBetween: {{ responsive.gapXs }},
         breakpoints: {
-          768: { slidesPerView: {{ responsive.sm }} },
-          992: { slidesPerView: {{ responsive.md }} },
-          1200: { slidesPerView: {{ responsive.lg }} }
+          768: { slidesPerView: {{ responsive.sm }}, spaceBetween: {{ responsive.gapSm }} },
+          992: { slidesPerView: {{ responsive.md }}, spaceBetween: {{ responsive.gapMd }} },
+          1200: { slidesPerView: {{ responsive.lg }}, spaceBetween: {{ responsive.gapLg }} }
         }
       }'
     >
@@ -39,7 +41,7 @@
       {% endif %}
     </div>
   {% else %}
-    <div class="{{ componentName }}-grid" style="{{ columnStyles }}">
+    <div class="{{ componentName }}-grid" style="{{ columnStyles }};{{ gapStyles }}">
       {% for item in content %}
         <div class="{{ componentName }}-col">
           {% include "Shared/" ~ componentFile with { item } %}
