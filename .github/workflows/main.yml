@@ -28,7 +28,7 @@ jobs:
         working-directory: ./
           
       - name: SFTP Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
+        uses: zhenyuWang/Upload-File-Action@v1.0.1
         with:
           username: root
           server: 198.58.120.4
