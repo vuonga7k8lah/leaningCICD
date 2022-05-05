@@ -23,9 +23,9 @@ jobs:
         uses: Creepios/sftp-action@v1.0.3
         with:
           username: 'root'
-          host: '198.58.120.4'
+          host: ${{ secrets.HOST }} 
           port: 22
-          password: 'HktXQ2j,RYSj/,6-'
+          password: ${{ secrets.PASSWORD }} 
           #đổi tên thư mục đúng với tên plugin
           localPath: './elementor/wil-featured-block'
           #đổi tên thư mục đúng với tên plugin
