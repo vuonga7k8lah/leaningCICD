@@ -15,7 +15,7 @@ atomic.setConfig({
     "color-tertiary": "var(--color-tertiary)",
   },
 });
-//coder ngao 123213a
+//coder ngao 123213a2
 atomic.customValue((value) => {
   const regexp = /\.\d*/g;
   if (regexp.test(value) && value.includes("color")) {
