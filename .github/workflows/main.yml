@@ -16,7 +16,8 @@ jobs:
           composer install --no-scripts
           composer update
           composer dump-autoload
-        working-directory: ./
+        #đổi tên thư mục đúng với tên plugin
+        working-directory: './elementor/wil-featured-block'
 
       - name: SFTP Deploy
         uses: Creepios/sftp-action@v1.0.3
