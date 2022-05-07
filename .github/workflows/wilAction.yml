@@ -13,7 +13,6 @@ jobs:
 
       - name: Install composer
         run: |
-          composer install --no-scripts
           composer update
           composer dump-autoload
         #đổi tên thư mục đúng với tên plugin
@@ -22,14 +21,14 @@ jobs:
       - name: SFTP Deploy
         uses: Creepios/sftp-action@v1.0.3
         with:
-          username: 'root'
-          host: ${{ secrets.HOST }} 
+          username: ${{ secrets.USER_PLUGIN }}
+          host: ${{ secrets.HOST_PLUGIN }}
           port: 22
-          password: ${{ secrets.PASSWORD }} 
+          password: ${{ secrets.PASSWORD_PLUGIN }}
           #đổi tên thư mục đúng với tên plugin
           localPath: './elementor/wil-featured-block'
           #đổi tên thư mục đúng với tên plugin
-          remotePath: '/var/www/magicbadges/wp-content/plugins/wil-featured-block'
+          remotePath: '/var/www/plugins/wp-content/plugins/wil-featured-block'
 
           # sftp args
           args: '-o ConnectTimeout=5'
