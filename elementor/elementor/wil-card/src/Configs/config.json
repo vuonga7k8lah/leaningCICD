@@ -1,0 +1,21 @@
+{
+  "name": "wil-card",
+  "title": "Wiloke Card",
+  "icon": "eicon-info-box",
+  "category": "",
+  "keywords": [
+    "card",
+    "wiloke",
+    "table",
+    "cardTable",
+    "price",
+    "card table",
+    "list"
+  ],
+  "css": "https://envato-element-textcard.netlify.app/styles/styles.css",
+  "js": "https://envato-element-textcard.netlify.app/js/scripts.js",
+  "libs": {
+    "css": [],
+    "js": []
+  }
+}

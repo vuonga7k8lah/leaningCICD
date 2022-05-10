@@ -1,10 +1,13 @@
-#Quy trình setup đẩy plugin tự động
-##Bước1: copy plugin muốn đẩy sinh ra từ repo mà a Long cấp (trong thư mục elementor) rồi copy vào thư mục elementor của mình
-![img.png](img.png)
-##Bước2: chạy lệnh sau 
-![img_1.png](img_1.png)
+##Quy trình setup đẩy plugin tự động
+
+####Bước1: 
+sửa tên thư mục ứng với namespace của plugin trong file wilAction.yml
+![img_3.png](img_3.png)
+
+####Bước2: chạy lệnh sau 
+
  lưu ý phần trữ phía sau là nội dung commit
-##Bước3: lên repo 
+####Bước3: lên repo 
 https://github.com/vuonga7k8lah/leaningCICD/actions
 
 kiểm tra qua trình deloy và vào lại host để kiểm tra lại plugin

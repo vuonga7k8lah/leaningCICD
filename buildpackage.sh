@@ -1,11 +1,16 @@
 #!/bin/bash
 
-echo "Hello Welcame to the buildpackage.sh by author:lazyb0yyy "
+echo "Enter the commit message: "
+read commitMessage
+echo "Enter the SOURCE_DIR: "
+read SOURCE_DIR
+echo "Enter the TARGET_DIR: "
+read TARGET_DIR
 
-
-git status \
+mv -f $SOURCE_DIR $TARGET_DIR \
+&& git status \
 && git add . \
-&& git commit -m "$1" \
+&& git commit -m commitMessage \
 && git push -f
 
 echo "Build package is done"
