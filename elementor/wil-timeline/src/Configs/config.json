@@ -1,0 +1,19 @@
+{
+  "name": "wil-timeline",
+  "title": "Wiloke Timeline",
+  "icon": "eicon-time-line",
+  "category": "",
+  "keywords": [
+    "card",
+    "wiloke",
+    "timeline",
+    "timeline block",
+    "list"
+  ],
+  "css": "https://envato-element-timeline.netlify.app/styles/styles.css",
+  "js": "https://envato-element-timeline.netlify.app/js/scripts.js",
+  "libs": {
+    "css": [],
+    "js": []
+  }
+}

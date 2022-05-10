@@ -1,0 +1,53 @@
+{% set componentName = "wil-timeline" %}
+{% set lineColorStyle = lineColor ? 'background-color:' ~ lineColor ~ ';' : '' %}
+{% set dotColorStyle = lineColor ? 'color:' ~ lineColor ~ ';' : '' %}
+
+
+{% if content|length == 0 %}
+<div class="{{ componentName }}-wrapper">
+  <div class="p:40px fz:20px ta:center bgc:#eee cur:pointer">Click here to set up the timeline</div>
+</div>
+{% else %}
+
+<div class="{{ componentName }}-wrapper">
+  {% for item in content %}
+    {% set isOdd = loop.index0 % 2 == 0 %}
+    {% set background = item.backgroundColor ? 'background-color:' ~ item.backgroundColor ~ ';' : '' %}
+    {% set titleColor = item.titleColor ? 'color:' ~ item.titleColor ~ ';' : '' %}
+    {% set textColor = item.textColor ? 'color:' ~ item.textColor ~ ';' : '' %}
+    {% set timeColor = item.timeColor ? 'color:' ~ item.timeColor ~ ';' : '' %}
+    {% set buttonColor = item.buttonColor ? 'color:' ~ item.buttonColor ~ ';' : '' %}
+    {% set buttonBackgroundColor = item.buttonBackgroundColor ? 'background-color:' ~ item.buttonBackgroundColor ~ ';' : '' %}
+    <div class="{{ componentName }} pos:relative ov:hidden maw:860px m:auto d:flex c:#000 lh:1.5 {{ isOdd ? '' : 'jc:flex-end@sm' }}">
+      <div class="{{ componentName }}__inner m:20px_0 mr:40px@+sm d:flex@sm ai:center pos:relative {{ isOdd ? '' : 'flf:row-reverse' }}">
+
+        {% if item.image %}
+          <div class="w:50%@sm {{ isOdd ? 'mr:30px@sm' : 'ml:30px@sm' }}">
+            <img class="w:100% va:middle bdrs:15px" src="{{ item.image }}" alt="">
+          </div>
+        {% endif %}
+
+        <div class="{{ componentName }}__content w:50%@sm {{ isOdd ? 'ml:30px@sm' : 'mr:30px@sm ta:right@sm' }}">
+          {% if item.time %}
+            <div class="{{ componentName }}__time fz:pfs(40px,80px) timeTypo c:#eee lts:1px fw:700!" style="{{ timeColor }}{{ timeTypo }}">
+              <span>{{ item.time }}</span>
+            </div>
+          {% endif %}
+          <div class="pos:absolute z:9 t:50% r:-44px@+md l:50%@md trf:translate(-50%,-50%)_rotate(45deg) w:16px h:16px bgc:#fff c:#eee bd:2px_solid_currentcolor" style="{{ dotColorStyle }}"></div>
+          {% if item.title %}
+            <h2 class="{{ componentName }}__title titleTypo m:0 fz:pfs(22px,26px) lts:1px fw:600!" style="{{ titleColor }}{{ titleTypo }}">{{ item.title }}</h2>
+          {% endif %}
+          {% if item.text %}
+            <div class="{{ componentName }}__text textTypo mt:10px op:0.8 fz:15px c:#444" style="{{ textColor }}{{ textTypo }}">{{ item.text }}</div>
+          {% endif %}
+          {% if item.buttonText %}
+            <a href="{{ item.buttonUrl }}" class="{{ componentName }}-2__btn d:inline-block bxsh:none o:0 td:none! p:13px_30px bdrs:6px bgc:#ffa4b0 c:#fff mt:30px fz:14px fw:600" style="{{ buttonColor }}{{ buttonBackgroundColor }}">{{ item.buttonText }}</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="pos:absolute t:0 r:12px r:50%@sm w:2px h:100% mr:-1px bgc:#eee bdrs:2px" style="{{ lineColorStyle }}"></div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endif %}

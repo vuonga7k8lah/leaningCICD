@@ -16,7 +16,7 @@ jobs:
           composer update
           composer dump-autoload
         #đổi tên thư mục đúng với tên plugin
-        working-directory: './elementor/wil-featured-block'
+        working-directory: './elementor/wil-timeline'
 
       - name: SFTP Deploy
         uses: Creepios/sftp-action@v1.0.3
@@ -26,9 +26,9 @@ jobs:
           port: 22
           password: ${{ secrets.PASSWORD_PLUGIN }}
           #đổi tên thư mục đúng với tên plugin
-          localPath: './elementor/wil-featured-block'
+          localPath: './elementor/wil-timeline'
           #đổi tên thư mục đúng với tên plugin
-          remotePath: '/var/www/plugins/wp-content/plugins/wil-featured-block'
+          remotePath: '/var/www/plugins/wp-content/plugins/wil-timeline'
 
           # sftp args
           args: '-o ConnectTimeout=5'

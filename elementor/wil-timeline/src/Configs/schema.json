@@ -1,0 +1,149 @@
+[
+  {
+    "id": "general",
+    "type": "section",
+    "name": "general",
+    "label": "General",
+    "default": [],
+    "fields": [
+      {
+        "id": "general_variant",
+        "type": "select",
+        "default": "variant1",
+        "name": "variant",
+        "label": "Variant",
+        "options": {
+          "variant1": "Variant 1 (Vertical)",
+          "variant2": "Variant 2 (Horizontal)",
+          "variant3": "Variant 3 (Vertical)"
+        }
+      },
+      {
+        "id": "general_titleTypo",
+        "type": "typography",
+        "label": "Title typography",
+        "name": "titleTypo",
+        "default": "",
+        "selector": "{{WRAPPER}} .titleTypo"
+      },
+      {
+        "id": "general_textTypo",
+        "type": "typography",
+        "label": "Text typography",
+        "name": "textTypo",
+        "default": "",
+        "selector": "{{WRAPPER}} .textTypo"
+      },
+      {
+        "id": "general_timeTypo",
+        "type": "typography",
+        "label": "Time typography",
+        "name": "timeTypo",
+        "default": "",
+        "selector": "{{WRAPPER}} .timeTypo"
+      },
+      {
+        "id": "general_lineColor",
+        "type": "color",
+        "default": "",
+        "name": "lineColor",
+        "label": "Line Color"
+      },
+      {
+        "id": "general_content",
+        "type": "array",
+        "default": [],
+        "name": "content",
+        "label": "Content",
+        "fields": [
+          {
+            "id": "general_content_image",
+            "type": "media",
+            "default": {
+              "url": "/wp-content/plugins/wil-timeline/src/Assets/Image/placeholder.jpeg"
+            },
+            "name": "image",
+            "label": "Image"
+          },
+          {
+            "id": "general_content_time",
+            "type": "text",
+            "default": "2022",
+            "name": "time",
+            "label": "Time"
+          },
+          {
+            "id": "general_content_title",
+            "type": "text",
+            "default": "Monique Greer",
+            "name": "title",
+            "label": "Title"
+          },
+          {
+            "id": "general_content_text",
+            "type": "wysiwyg",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada augue eu rhoncus vehicula",
+            "name": "text",
+            "label": "Description"
+          },
+          {
+            "id": "general_content_buttonText",
+            "type": "text",
+            "default": "",
+            "name": "buttonText",
+            "label": "Button Text"
+          },
+          {
+            "id": "general_content_buttonUrl",
+            "type": "text",
+            "default": "",
+            "name": "buttonUrl",
+            "label": "Button Url"
+          },
+          {
+            "id": "general_content_backgroundColor",
+            "type": "color",
+            "default": "",
+            "name": "backgroundColor",
+            "label": "Background Color (Variant 1, 2)"
+          },
+          {
+            "id": "general_content_timeColor",
+            "type": "color",
+            "default": "",
+            "name": "timeColor",
+            "label": "Time Color"
+          },
+          {
+            "id": "general_content_titleColor",
+            "type": "color",
+            "default": "",
+            "name": "titleColor",
+            "label": "Title Color"
+          },
+          {
+            "id": "general_content_textColor",
+            "type": "color",
+            "default": "",
+            "name": "textColor",
+            "label": "Text Color"
+          },
+          {
+            "id": "general_content_buttonColor",
+            "type": "color",
+            "default": "",
+            "name": "buttonColor",
+            "label": "Button Color"
+          },
+          {
+            "id": "general_content_buttonBackgroundColor",
+            "type": "color",
+            "default": "",
+            "name": "buttonBackgroundColor",
+            "label": "Button Background Color"
+          }
+        ]
+      }
+    ]
+  }
+]

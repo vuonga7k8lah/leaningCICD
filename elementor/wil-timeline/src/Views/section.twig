@@ -1,0 +1,11 @@
+{% set componentName = "wil-timeline" %}
+
+{% include "Containers/" ~ data.general.variant ~ ".twig" with {
+  content: data.general.content,
+  titleTypo: data.general.titleTypo,
+  textTypo: data.general.textTypo,
+  timeTypo: data.general.timeTypo,
+  lineColor: data.general.lineColor,
+  responsive: data.responsive,
+  carousel: data.carousel,
+} %}
