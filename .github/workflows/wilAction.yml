@@ -16,19 +16,19 @@ jobs:
           composer update
           composer dump-autoload
         #đổi tên thư mục đúng với tên plugin
-        working-directory: './elementor/wil-card'
+        working-directory: './elementor/wil-featured-block'
 
       - name: SFTP Deploy
         uses: Creepios/sftp-action@v1.0.3
         with:
           username: ${{ secrets.USER_PLUGIN }}
-          host: ${{ secrets.HOST }}
+          host: ${{ secrets.HOST_PLUGIN }}
           port: 22
-          password: ${{ secrets.PASSWORD }}
+          password: ${{ secrets.PASSWORD_PLUGIN }}
           #đổi tên thư mục đúng với tên plugin
-          localPath: './elementor/wil-card'
+          localPath: './elementor/wil-featured-block'
           #đổi tên thư mục đúng với tên plugin
-          remotePath: '/var/www/plugins/wp-content/plugins/wil-card'
+          remotePath: '/var/www/plugins/wp-content/plugins/wil-featured-block'
 
           # sftp args
           args: '-o ConnectTimeout=5'
